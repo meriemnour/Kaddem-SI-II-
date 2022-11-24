@@ -94,7 +94,7 @@ public class DepartementService implements IDerpartementService {
     public Departement assignEtudiantToDepartement(Integer id,Integer idDep) {
 
         Etudiant e =iEtudiantService.getEtudiantbyid(id);
-        Departement d=getdepbyid(idDep);
+        Departement d=departementRepository.findById(idDep).orElse(null);
         e.setDepartement(d);
         iEtudiantService.addEtudiant(e);
         return d;

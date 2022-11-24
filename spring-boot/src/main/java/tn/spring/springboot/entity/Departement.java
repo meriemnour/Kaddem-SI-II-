@@ -22,8 +22,8 @@ public class Departement implements Serializable {
     private int idDepart;
     @Column(nullable = false)
     private String nomDepart;
-   /* @OneToMany(mappedBy = "departement")
-    List<Etudiant> etudiants;*/
+   @OneToMany(mappedBy = "departement")
+    List<Etudiant> etudiants;
 
     /*@Temporal(TemporalType.DATE)
     Date publicationDate;*/

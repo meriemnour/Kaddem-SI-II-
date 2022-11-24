@@ -17,14 +17,16 @@ public interface IContractRepository extends JpaRepository<Contrat, Integer> {
     List<Contrat> findBySpecialite(String specialite);
 
 
-    @Query("SELECT c FROM Contrat c"
+
+ /*   @Query("SELECT c FROM Contrat c"
             + " INNER JOIN Etudiant e"
             + " ON c.etudiant.idEtudiant=e.idEtudiant"
             + " INNER JOIN Universite U"
             + " INNER JOIN Departement D"
             + " ON U.departement = e.departement.idDepart"
-            + " ORDER BY idUni")
-    List<Contrat> retrieveContratByIdUni (@Param("idUni") int idUni);
+            + " ORDER BY u.idUni")*/
+    @Query("select c from Contrat c join Universite  u on (c.etudiant.departement member u.departement) order by u.idUni")
+    List<Contrat> retrieveContratByIdUni ();
 
 }
 /*

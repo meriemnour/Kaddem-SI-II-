@@ -20,4 +20,6 @@ public interface IContractService {
     Contrat getContratbyid(int id);
 
     List<Contrat> findById(int id);
+
+    List<Contrat> OrderBy();
 }

@@ -1,4 +1,5 @@
 package tn.spring.springboot.service;
+import tn.spring.springboot.entity.Departement;
 import tn.spring.springboot.entity.Universite;
 
 import java.util.List;
@@ -17,4 +18,6 @@ public interface IUniversiteService {
     void deleteUni(int id);
     Universite getUnid(int id);
     public void assignDepartToUni(int idU,int dep);
+
+    public List<Departement> retrieveDepartementsByUniversite(Integer idUniversite);
 }

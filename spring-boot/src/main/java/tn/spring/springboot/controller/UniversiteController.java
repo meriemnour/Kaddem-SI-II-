@@ -4,6 +4,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import tn.spring.springboot.entity.Departement;
 import tn.spring.springboot.entity.Universite;
 import tn.spring.springboot.service.IUniversiteService;
 
@@ -49,4 +50,9 @@ public class UniversiteController {
         iUniversiteService.assignDepartToUni(idU, id);
     }*/
 
+    @GetMapping("/retrieveDepartementsByUniversite/{idUni}")
+    public List<Departement> retrieveDepartementsByUniversite(@PathVariable("idUni") Integer idUni){
+        return  iUniversiteService.retrieveDepartementsByUniversite(idUni);
+
+    }
 }

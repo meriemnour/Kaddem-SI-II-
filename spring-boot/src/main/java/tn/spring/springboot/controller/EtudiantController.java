@@ -3,6 +3,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import tn.spring.springboot.entity.Contrat;
 import tn.spring.springboot.entity.Etudiant;
 import tn.spring.springboot.entity.Option;
 import tn.spring.springboot.service.IEtudiantService;
@@ -117,5 +118,20 @@ public class EtudiantController {
     public  void assignEtudtoDep(@PathVariable("idEtudiant") int idEtudiant,@PathVariable("idDepart") int idDepart){
         etudiantService.AssignEtudtoDepartement(idEtudiant,idDepart);
     }*/
+
+
+    @PutMapping(value = "/addAndAssignEtudiantToEquipeAndContract/{idContrat}/{idequipe}")
+    @ResponseBody
+    public void addAndAssignEtudiantToEquipeAndContract(@RequestBody Etudiant etudiant, @PathVariable("idContrat")Integer idContrat ,@PathVariable("idequipe") Integer idequipe ) {
+        etudiantService.addAndAssignEtudiantToEquipeAndContract(etudiant,idContrat,idequipe);
+    }
+    @PutMapping ("/affectContratToEtudiant/{nom}/{prenom}")
+    public Contrat affectContratToEtudiant(@RequestBody Contrat c, @PathVariable("nom") String nom, @PathVariable("prenom") String prenom) {
+        return etudiantService.affectContratToEtudiant(c,nom,prenom);
+    }
+    @GetMapping("/list/{idDepart}")
+    List<Etudiant> retrieveAllEtudiants(@PathVariable("idDepart") Integer idDepart){
+        return etudiantService.getEtudiantsByDepartement(idDepart);
+    }
 
 }

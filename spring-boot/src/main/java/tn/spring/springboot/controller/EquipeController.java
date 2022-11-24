@@ -40,12 +40,12 @@ public class EquipeController {
     }
 
 
-    @Operation(description = "supprimer tout les  equipe")
+    /*@Operation(description = "supprimer tout les  equipe")
     @DeleteMapping("/delDetEquipe/{IdEquipe}")
     public  void deleteEqp(@PathVariable("IdEquipe") int id){
 
         iEquipeService.deleteeqp(id);
-    }
+    }*/
 
     @GetMapping("/findIdEtudiant/{idEtudiant}")
     public List<Equipe> findEtudiantbyPrenom(@PathVariable("idEtudiant") int id){

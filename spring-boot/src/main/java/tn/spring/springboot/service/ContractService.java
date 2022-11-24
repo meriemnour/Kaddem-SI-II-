@@ -97,5 +97,9 @@ public class ContractService implements IContractService{
         return null;
     }
 
+    public List<Contrat> OrderBy()
+    {
+        return contratRepository.retrieveContratByIdUni ();
+    }
 
 }

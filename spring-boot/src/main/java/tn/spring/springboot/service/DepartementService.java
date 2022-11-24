@@ -5,7 +5,10 @@ import org.springframework.stereotype.Service;
 import tn.spring.springboot.entity.Departement;
 import tn.spring.springboot.entity.Etudiant;
 import tn.spring.springboot.entity.Option;
+import tn.spring.springboot.entity.Universite;
 import tn.spring.springboot.repository.IDepartementRepository;
+import tn.spring.springboot.repository.IEtudiantRepository;
+
 import java.util.List;
 @Service
 public class DepartementService implements IDerpartementService {
@@ -44,6 +47,16 @@ public class DepartementService implements IDerpartementService {
     @Autowired
     IDepartementRepository departementRepository;
 
+    @Autowired
+    IEtudiantService iEtudiantService;
+
+    @Autowired
+    IUniversiteService iUniversiteService;
+
+
+
+
+
 
     @Override
     public List<Departement> getAlldep() {
@@ -76,4 +89,21 @@ public class DepartementService implements IDerpartementService {
         return departementRepository.retrieveDepartementByOptionEtudiant(op);
     }
 
+
+    @Override
+    public Departement assignEtudiantToDepartement(Integer id,Integer idDep) {
+
+        Etudiant e =iEtudiantService.getEtudiantbyid(id);
+        Departement d=getdepbyid(idDep);
+        e.setDepartement(d);
+        iEtudiantService.addEtudiant(e);
+        return d;
+    }
+    @Override
+    public void assignUniversiteToDepartement(Integer idUniversite, Integer idDepartement) {
+        Departement d=getdepbyid(idDepartement);
+        Universite u=iUniversiteService.getUnid(idUniversite);
+        u.getDepartement().add(d);
+        iUniversiteService.addUniv(u);
+    }
 }

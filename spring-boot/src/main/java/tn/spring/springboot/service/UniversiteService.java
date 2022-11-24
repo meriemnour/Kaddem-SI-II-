@@ -72,5 +72,10 @@ public class UniversiteService implements IUniversiteService{
 
 
     }
+
+    @Override
+    public List<Departement> retrieveDepartementsByUniversite(Integer idUniversite) {
+        return universiteRepository.retrieveDepartementsByUniversite(idUniversite);
+    }
 }
 

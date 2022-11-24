@@ -14,6 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 @Tag(name = "Contrat Management")
 @RestController
+@RequestMapping("/contrat")
 public class ContractController {
     /*@Autowired
     IContractService iContractService;
@@ -75,6 +76,14 @@ public class ContractController {
     public  void deleteC(@PathVariable("idContrat") int id){
 
         contratService.deleteContrat(id);
+    }
+
+
+    @Operation(description="affichage liste des contrats par l'id universite")
+    @GetMapping("/get")
+    @ResponseBody
+    public List<Contrat> get(){
+        return contratService.OrderBy();
     }
 
 

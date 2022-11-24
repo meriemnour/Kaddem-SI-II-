@@ -76,12 +76,21 @@ public class DepartementController {
         iDepartementService.deletedep(id);
     }
 
-   /* @GetMapping("/getDep/{option}")
+    @GetMapping("/getDep/{option}")
     public List<Departement> GetDepQ(@PathVariable("option" ) Option op){
 
         return  iDepartementService.retrieveDepartementByOptionEtudiant(op);
-    }*/
+    }
 
+    @PutMapping("/update/{id}/{idDep}")
+    public Departement assignEtudiantToDepartement(@PathVariable("id") Integer id ,@PathVariable("idDep") Integer idDep){
+        return  iDepartementService.assignEtudiantToDepartement(id,idDep);
+    }
+    @PutMapping("/assignUniversiteToDepartement/{idU}/{idDep}")
+    public void assignUniversiteToDepartement(@PathVariable("idU") Integer idU ,@PathVariable("idDep") Integer iddep){
+        iDepartementService.assignUniversiteToDepartement(idU,iddep);
+
+    }
 
 
 

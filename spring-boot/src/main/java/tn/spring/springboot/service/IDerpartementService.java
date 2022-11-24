@@ -21,6 +21,9 @@ public interface IDerpartementService {
 
     List<Departement> retrieveDepartementByOptionEtudiant( Option op);
 
+    Departement assignEtudiantToDepartement(Integer id,Integer idDe);
+    public void assignUniversiteToDepartement(Integer idUniversite, Integer idDepartement);
+
 
 
 }

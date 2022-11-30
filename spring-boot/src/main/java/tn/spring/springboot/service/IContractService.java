@@ -2,6 +2,7 @@ package tn.spring.springboot.service;
 
 import tn.spring.springboot.entity.Contrat;
 
+import java.util.Date;
 import java.util.List;
 
 public interface IContractService {
@@ -22,4 +23,12 @@ public interface IContractService {
     List<Contrat> findById(int id);
 
     List<Contrat> OrderBy();
+
+    float getChiffreAffaireEntreDeuxDate(Date startDate, Date endDate);
+    List<Contrat> contratBetween2dates(Date startDate, Date endDate);
+    Integer nbContratsValides(Date endDate, Date startDate);
+
+    List<Contrat>dateExp();
+
+    List<Contrat>ContratDepassAn();
 }

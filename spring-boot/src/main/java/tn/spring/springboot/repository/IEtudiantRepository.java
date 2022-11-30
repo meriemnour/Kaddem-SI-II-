@@ -36,15 +36,15 @@ public interface IEtudiantRepository extends JpaRepository<Etudiant, Integer> {
     @Query("select e from Etudiant e where e.nom=?1 and e.prenom=?2 ")
     Etudiant findEtudiantByNomPrenom(String nom,String prenom);
 
-    //List<Etudiant> findByPrenomENotNull();
- /*   @Query("select e from Etudiant e where e.nomE=?1 and e.prenomE=?2")
+   /* //List<Etudiant> findByPrenomENotNull();
+    @Query("select e from Etudiant e where e.nom=?1 and e.prenom=?2")
     Etudiant findEtudiantByNomAndPrenom(String nom, String prenom);
     List<Etudiant> findAllByOption(Option p);
     //hedhii
     @Query("select e from Etudiant e where e.departement.nomDepart=:nomDepart")
     List<Etudiant> retrieveStudentByDepart(@Param("nomDepart") String nomDepartement);
     //wala hedhi
-    @Query("select e from Etudiant e inner join e.departement.nomDepart=:nomDepart")
+    @Query("select e from Etudiant e inner join e.departement.nomDepart =:nomDepart")
     List<Etudiant> byDepart(@Param("nomDepart") String nomDepartement);
     @Query("select e from Etudiant e inner join e.departement ee where ee.nomDepart = ?1")
     List<Etudiant> findEtudiantByDepartement(String nomDep);*/

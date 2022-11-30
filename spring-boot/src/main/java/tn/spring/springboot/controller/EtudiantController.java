@@ -109,7 +109,7 @@ public class EtudiantController {
     }
 
 
-    /*@GetMapping("/findQuery/{thematique}")
+    @GetMapping("/findQuery/{thematique}")
     public List<Etudiant> findEtdQuery(@PathVariable("thematique") String th){
         return etudiantService.retrieveEtudiantByEquipeThematique(th);
     }
@@ -117,7 +117,7 @@ public class EtudiantController {
     @PutMapping("/AsignE/{idEtudiant}/{idDepart}")
     public  void assignEtudtoDep(@PathVariable("idEtudiant") int idEtudiant,@PathVariable("idDepart") int idDepart){
         etudiantService.AssignEtudtoDepartement(idEtudiant,idDepart);
-    }*/
+    }
 
 
     @PutMapping(value = "/addAndAssignEtudiantToEquipeAndContract/{idContrat}/{idequipe}")

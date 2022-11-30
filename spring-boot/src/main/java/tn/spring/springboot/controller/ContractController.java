@@ -4,12 +4,14 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 import tn.spring.springboot.entity.Contrat;
 import tn.spring.springboot.entity.Etudiant;
 import org.springframework.web.bind.annotation.RestController;
 import tn.spring.springboot.service.IContractService;
 
+import java.util.Date;
 import java.util.List;
 @AllArgsConstructor
 @Tag(name = "Contrat Management")
@@ -85,6 +87,63 @@ public class ContractController {
     public List<Contrat> get(){
         return contratService.OrderBy();
     }
+
+    @GetMapping("/getChiffreAffaireEntreDeuxDate/{start}/{end}")
+    float getChiffreAffaireEntreDeuxDate(@PathVariable("start") @DateTimeFormat(pattern = "yyyy-MM-dd") Date start,
+                                         @PathVariable("end")  @DateTimeFormat(pattern = "yyyy-MM-dd") Date end)
+    {
+        return contratService.getChiffreAffaireEntreDeuxDate(start,end);
+    }
+
+
+    @GetMapping("/contratBetween2dates/{start}/{end}")
+    List<Contrat> contratBetween2Dates(@PathVariable("start")@DateTimeFormat(pattern="yyyy-MM-dd") Date start,
+                                       @PathVariable("end")@DateTimeFormat(pattern="yyyy-MM-dd") Date end)
+    {
+        return contratService.contratBetween2dates(start,end);
+    }
+
+    @GetMapping("/nbrContratsValides/{end}/{start}")
+    Integer nbContratValides(@PathVariable("end")@DateTimeFormat(pattern="yyyy-MM-dd")Date end,
+                             @PathVariable("strat")@DateTimeFormat(pattern="yyyy-MM-dd")Date start)
+    {
+        return contratService.nbContratsValides(end,start);
+    }
+
+
+    @GetMapping("/contratExp")
+    List<Contrat> contratExp()
+    {
+        return contratService.dateExp();
+    }
+
+    @GetMapping("/contratDeapssAn")
+    List<Contrat> contraDepassAn()
+    {
+        return contratService.ContratDepassAn();
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

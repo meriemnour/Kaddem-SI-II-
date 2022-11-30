@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import tn.spring.springboot.entity.Contrat;
 import tn.spring.springboot.entity.Etudiant;
 
+import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -28,30 +29,19 @@ public interface IContractRepository extends JpaRepository<Contrat, Integer> {
     @Query("select c from Contrat c join Universite  u on (c.etudiant.departement member u.departement) order by u.idUni")
     List<Contrat> retrieveContratByIdUni ();
 
+
+    @Query("select  count (c) from Contrat c where c.dateFinContrat<=?1 and c.dateDebutContrat>=?2")
+    Integer countContratByDateDebutContratAfterAndDateFinContratBefore(Date dateFinContrat, Date dateDebutContrat);
+
+    @Query("select  SUM(c.montant) from Contrat c where c.dateFinContrat<=?2 and c.dateDebutContrat>=?1")
+    float getChiffreAffaireEntreDeuxDate(Date startDate, Date endDate);
+
+    @Query("select c from Contrat c where   c.dateDebutContrat>=?1 and c.dateFinContrat<=?2")
+    List<Contrat> contratBetween2dates(Date startDate, Date endDate);
+
+    @Query("select c from Contrat c where DATEDIFF(current_date,c.dateFinContrat)=-15")
+    List<Contrat> dateExp();
+
+    @Query("select c from Contrat c where DATEDIFF(c.dateFinContrat,c.dateDebutContrat)>=365")
+    List<Contrat>contratDepassAn();
 }
-/*
- @Query("SELECT etudiant FROM Etudiant etudiant"
-            + " INNER JOIN etudiant.equipes equipe"
-            + " INNER JOIN DetailEquipe detail"
-            + " ON detail.IdEquipe = equipe.idEquipe"
-            + " where detail.thematique= :thematique")
-    List<Etudiant> retrieveEtudiantByEquipeThematique (@Param("thematique") String thematique);
-
-SELECT    c
-FROM  Contrat AS c
-INNER JOIN Etudiant AS e
-    ON s.StudentID = r.StudentID
-INNER JOIN HallData.dbo.Halls AS h1
-    ON r.HallPref1 = h1.HallID
-INNER JOIN HallData.dbo.Halls AS h2
-    ON r.HallPref2 = h2.HallID
-INNER JOIN HallData.dbo.Halls AS h3
-    ON r.HallPref3 = h3.HallID
-
-SELECT  *
-FROM    one
-JOIN    two
-ON      one.one_name = two.one_name
-ORDER BY
-        one.id
- */

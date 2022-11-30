@@ -25,6 +25,8 @@ public class Contrat implements Serializable {
     private Date dateFinContrat;
     @Column(name = "archive")
     private Boolean archive;
+    @Column(name = "montant")
+    private int montant;
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private Specialite specialite;

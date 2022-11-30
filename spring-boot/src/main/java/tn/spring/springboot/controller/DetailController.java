@@ -47,8 +47,8 @@ public class DetailController {
 
         detailEquipeService.deletedeqp(id);
     }
-    /*@GetMapping("/getth/{thematique}")
+    @GetMapping("/getth/{thematique}")
     public List<DetailEquipe>findbyThem(@PathVariable("thematique") String Theme){
         return  detailEquipeService.findByThematiqueLike(Theme);
-    }*/
+    }
 }
